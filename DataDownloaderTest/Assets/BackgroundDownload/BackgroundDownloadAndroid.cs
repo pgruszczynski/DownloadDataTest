@@ -176,7 +176,7 @@ namespace Unity.Networking
         internal static Dictionary<string, BackgroundDownload> LoadDownloads()
         {
             var downloads = new Dictionary<string, BackgroundDownload>();
-            var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.dl");
+            var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (File.Exists(file))
             {
                 foreach (var line in File.ReadAllLines(file))
@@ -196,7 +196,7 @@ namespace Unity.Networking
 
         internal static void SaveDownloads(Dictionary<string, BackgroundDownload> downloads)
         {
-            var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.dl");
+            var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (downloads.Count > 0)
             {
                 var ids = new string[downloads.Count];

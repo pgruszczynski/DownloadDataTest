@@ -95,47 +95,46 @@ public class BackgroundDownload {
         notificationBuilder = new NotificationCompat.Builder(context, DOWNLOAD_NOTIFICATION_CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.drawable.icon)
                 .setContentTitle("Questland Test")
-                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setOnlyAlertOnce(true)
                 .setOngoing(true);
 
         final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
 
         final int PROGRESS_MAX = 100;
-        int PROGRESS_CURRENT = 0;
 
-//        notificationBuilder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
-//        notificationManagerCompat.notify(notificationId, notificationBuilder.build());
-
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try{
-//                    Thread.sleep(250);
-//                }
-//                catch(InterruptedException e){
-//                    e.printStackTrace();
-//                }
-//                int currentProgtress;
-//                for(currentProgtress = 0; currentProgtress<=PROGRESS_MAX; currentProgtress += (int)(getProgress() * 100)){
-//                    notificationBuilder.setProgress(PROGRESS_MAX, currentProgtress, false);
-//                    notificationManagerCompat.notify(notificationId, notificationBuilder.build());
-//                    try{
-//                        Thread.sleep(250);
-//                    }
-//                    catch(InterruptedException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                notificationBuilder.setContentText("Questland file download complete")
-//                        .setProgress(0,0,false)
-//                        .setOngoing(false);
-//
-//                notificationManagerCompat.notify(notificationId, notificationBuilder.build());
-//
-//            }
-//        }).start();
+        notificationBuilder.setProgress(PROGRESS_MAX, 0, false);
         notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while(getPercentageProgress() < PROGRESS_MAX){
+
+                    int currentProgress = getPercentageProgress();
+
+                    notificationBuilder.setProgress(PROGRESS_MAX, currentProgress, false)
+                            .setContentText("Download progress " + currentProgress + "%");
+
+                    notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+
+                    try{
+                        Thread.sleep(500);
+                    }
+                    catch(InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+
+                notificationBuilder.setContentText("Questland file download complete")
+                        .setProgress(0,0,false)
+                        .setOngoing(false);
+
+                notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+
+            }
+        }).start();
     }
 
 
@@ -190,6 +189,10 @@ public class BackgroundDownload {
         }
     }
 
+    public int getPercentageProgress(){
+        return (int)(getProgress() * 100);
+    }
+
     public float getProgress() {
         if (error != null)
             return 1.0f;
@@ -205,16 +208,13 @@ public class BackgroundDownload {
         }
         cursor.moveToFirst();
         int downloaded = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
-        if(isFilesizeKnown == false){
-            setTotalFilesizeBytes(cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)));
-            isFilesizeKnown = true;
-        }
+        int total = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
         cursor.close();
         if (downloaded <= 0)
             return 0.0f;
-        if (totalFilesizeBytes <= 0)
+        if (total <= 0)
             return -1.0f;
-        float ret = downloaded / (float)totalFilesizeBytes;
+        float ret = downloaded / (float)total;
         if (ret < 1.0f)
             return ret;
         return 1.0f;
@@ -225,7 +225,7 @@ public class BackgroundDownload {
     }
 
     public int getTotalFilesizeBytes(){
-        return totalFilesizeBytes;
+        return 42;
     }
 
     public String getDownloadUrl() {

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class DownloadTester : MonoBehaviour
 {
     private const string POSTFIX = ".data";
-    
+
     [SerializeField] private string[] _testURIs;
     [SerializeField] private string _dataPath;
     [SerializeField] private Slider _downloadProgress;
@@ -48,17 +48,14 @@ public class DownloadTester : MonoBehaviour
         {
             float downloadProgress;
 
-            yield return _downloadDelay;
-
-
-            _downloadLog.text = string.Format("Started downloads = {0}\nFile size = {1} MB\n Filename = {2} ",
-                BackgroundDownload.backgroundDownloads.Length, download.TotalFileSizeMegabytes, fileName);
-
-            while (download.status == BackgroundDownloadStatus.Downloading)
+            while (download.keepWaiting)
             {
                 downloadProgress = download.progress;
                 _downloadProgress.value = downloadProgress;
                 _downloadProgressText.text = downloadProgress.ToString();
+                
+                _downloadLog.text = string.Format("Started downloads = {0}\nFile size = {1} MB\nFilename = {2} ",
+                    BackgroundDownload.backgroundDownloads.Length, download.TotalFileSizeMegabytes, fileName);
                 yield return _downloadDelay;
             }
 
@@ -77,7 +74,7 @@ public class DownloadTester : MonoBehaviour
 
     private IEnumerator ResumeDownload()
     {
-        if (BackgroundDownload.backgroundDownloads.Length == 0)
+        if (BackgroundDownload.backgroundDownloads.Length == 0)  
         {
             yield break;
         }
