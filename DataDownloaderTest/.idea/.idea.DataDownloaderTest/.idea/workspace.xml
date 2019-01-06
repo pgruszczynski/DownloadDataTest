@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="31a60dcf-6e90-41df-9b98-f010b581bb72" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1335">
+              <caret line="95" column="53" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="53" />
+              <folding>
+                <marker date="1546529817560" expanded="false" signature="6:184" ph="..." />
+                <marker date="1546529817560" expanded="true" signature="493:4987" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="536:709" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="753:1664" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="992:1658" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="1493:1648" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="1706:1781" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="1882:4984" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="2028:2348" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="2054:2338" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="2599:2780" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="2861:3232" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="3272:3292" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="3363:3870" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="3439:3860" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="4196:4277" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="4411:4697" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="4564:4687" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="4734:4859" ph="{...}" />
+                <marker date="1546529817560" expanded="true" signature="4896:4978" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+              <folding>
+                <marker date="1546787695883" expanded="false" signature="25:128" ph="..." />
+                <marker date="1546787695883" expanded="true" signature="156:7310" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="216:7307" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="369:720" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="494:509" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="547:710" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="867:1480" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="1088:1345" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="1584:3239" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="1817:2000" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="2165:2541" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="3311:3517" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="3577:4203" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="3603:3986" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4018:4167" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4235:4325" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4364:4692" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4719:4794" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4824:5275" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="4899:5265" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5111:5251" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5306:5364" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5522:5599" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5645:5730" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5770:5848" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="5928:6685" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="6149:6539" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="6278:6525" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="6779:7301" ph="{...}" />
+                <marker date="1546787695883" expanded="true" signature="6928:7216" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <marker date="1546514522282" expanded="true" signature="79:883" ph="{...}" />
+                <marker date="1546514522282" expanded="true" signature="137:881" ph="{...}" />
+                <marker date="1546514522282" expanded="true" signature="243:375" ph="{...}" />
+                <marker date="1546514522282" expanded="true" signature="489:531" ph="{...}" />
+                <marker date="1546514522282" expanded="true" signature="676:761" ph="{...}" />
+                <marker date="1546514522282" expanded="true" signature="855:875" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/DownloadTester.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="93" column="10" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
+              <folding>
+                <marker date="1546785494370" expanded="false" signature="6:167" ph="..." />
+                <marker date="1546785494370" expanded="true" signature="212:2992" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="724:779" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="822:1295" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="883:1289" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="968:1152" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="1406:2505" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="1529:2499" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="1914:2175" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="2371:2489" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="2548:2819" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="2618:2663" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="2849:2905" ph="{...}" />
+                <marker date="1546785494370" expanded="true" signature="2949:2990" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="665">
+              <caret line="272" selection-start-line="272" selection-end-line="272" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>save</find>
+      <find>notifica</find>
+      <find>backgrounddownloadimpl</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DownloadTester.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/build.gradle" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DownloadTester.cs" />
+        <option value="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java" />
+      </list>
+    </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="riderModule/invalid/Default Android Facet" />
+    </ignored-facets>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="200" />
+    <option name="y" value="107" />
+    <option name="width" value="1200" />
+    <option name="height" value="646" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="BackgroundDownload" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+              <item name="src" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+              <item name="src" type="1045f7f1:UnityExplorerNode" />
+              <item name="com" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+              <item name="src" type="1045f7f1:UnityExplorerNode" />
+              <item name="com" type="1045f7f1:UnityExplorerNode" />
+              <item name="unity3d" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+              <item name="Android" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+              <item name="src" type="1045f7f1:UnityExplorerNode" />
+              <item name="com" type="1045f7f1:UnityExplorerNode" />
+              <item name="unity3d" type="1045f7f1:UnityExplorerNode" />
+              <item name="backgrounddownload" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31a60dcf-6e90-41df-9b98-f010b581bb72" name="Default Changelist" comment="" />
+      <created>1546542997144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1546542997144</updated>
+      <workItem from="1546543006144" duration="4159000" />
+      <workItem from="1546785356239" duration="3885000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8044000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Captures" order="5" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="NuGet" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" order="13" />
+      <window_info anchor="bottom" id="Unit Tests" order="14" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" />
+      <window_info anchor="bottom" id="Unity" order="17" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
+      <window_info anchor="right" id="Errors In Solution" order="7" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/CompletionReceiver.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="95" column="53" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="53" />
+          <folding>
+            <marker date="1546529817560" expanded="false" signature="6:184" ph="..." />
+            <marker date="1546529817560" expanded="true" signature="493:4987" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="536:709" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="753:1664" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="992:1658" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="1493:1648" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="1706:1781" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="1882:4984" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="2028:2348" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="2054:2338" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="2599:2780" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="2861:3232" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="3272:3292" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="3363:3870" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="3439:3860" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="4196:4277" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="4411:4697" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="4564:4687" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="4734:4859" ph="{...}" />
+            <marker date="1546529817560" expanded="true" signature="4896:4978" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <marker date="1546514522282" expanded="true" signature="79:883" ph="{...}" />
+            <marker date="1546514522282" expanded="true" signature="137:881" ph="{...}" />
+            <marker date="1546514522282" expanded="true" signature="243:375" ph="{...}" />
+            <marker date="1546514522282" expanded="true" signature="489:531" ph="{...}" />
+            <marker date="1546514522282" expanded="true" signature="676:761" ph="{...}" />
+            <marker date="1546514522282" expanded="true" signature="855:875" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+          <folding>
+            <marker date="1546787695883" expanded="false" signature="25:128" ph="..." />
+            <marker date="1546787695883" expanded="true" signature="156:7310" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="216:7307" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="369:720" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="494:509" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="547:710" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="867:1480" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="1088:1345" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="1584:3239" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="1817:2000" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="2165:2541" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="3311:3517" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="3577:4203" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="3603:3986" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4018:4167" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4235:4325" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4364:4692" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4719:4794" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4824:5275" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="4899:5265" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5111:5251" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5306:5364" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5522:5599" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5645:5730" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5770:5848" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="5928:6685" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="6149:6539" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="6278:6525" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="6779:7301" ph="{...}" />
+            <marker date="1546787695883" expanded="true" signature="6928:7216" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="83" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/DownloadTester.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="93" column="10" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
+          <folding>
+            <marker date="1546785494370" expanded="false" signature="6:167" ph="..." />
+            <marker date="1546785494370" expanded="true" signature="212:2992" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="724:779" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="822:1295" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="883:1289" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="968:1152" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="1406:2505" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="1529:2499" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="1914:2175" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="2371:2489" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="2548:2819" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="2618:2663" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="2849:2905" ph="{...}" />
+            <marker date="1546785494370" expanded="true" signature="2949:2990" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="272" selection-start-line="272" selection-end-line="272" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

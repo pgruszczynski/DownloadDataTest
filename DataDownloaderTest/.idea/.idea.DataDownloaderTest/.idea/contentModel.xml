@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Tadeusz\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Tadeusz\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_DataDownloaderTest.639586197.00" t="ExcludeRecursive" />
+    <e p="I:\Unity Projects\_Praca(Gamesture)\DataDownloaderTest\DataDownloaderTest" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets\BackgroundDownload" t="Include">
+        <e p="BackgroundDownload.asmdef" t="Include" />
+        <e p="BackgroundDownload.cs" t="Include" />
+        <e p="BackgroundDownloadAndroid.cs" t="Include" />
+        <e p="BackgroundDownloadEditor.cs" t="Include" />
+        <e p="BackgroundDownloadiOS.cs" t="Include" />
+        <e p="BackgroundDownloadUWP.cs" t="Include" />
+      </e>
+      <e p="Assets\Scripts" t="Include">
+        <e p="DownloadTester.cs" t="Include" />
+      </e>
+      <e p="BackgroundDownload.csproj" t="IncludeRecursive" />
+      <e p="DataDownloaderTest.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
