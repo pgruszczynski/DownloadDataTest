@@ -7,11 +7,14 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.media.session.MediaSessionCompat;
 
 public class BackgroundDownload {
     public static BackgroundDownload create(String url, String destUri) {
@@ -55,6 +58,10 @@ public class BackgroundDownload {
     private int notificationImportance = NotificationManager.IMPORTANCE_DEFAULT;
     private int notificationId = 9696;
 
+    private Bitmap largeIcon;
+    private android.support.v4.media.app.NotificationCompat.MediaStyle mediaStyle;
+    private MediaSessionCompat mediaSessionCompat;
+
     private BackgroundDownload(Uri url, Uri dest) {
         downloadUri = url;
         destinationUri = dest;
@@ -66,6 +73,12 @@ public class BackgroundDownload {
 //        request.setTitle("Questland")
 //                .setDescription("Downloading additional files")
 //                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+    }
+
+    private void createCustomNotificationLook(Context context){
+        largeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_big);
+        mediaStyle = new android.support.v4.media.app.NotificationCompat.MediaStyle();
+        mediaSessionCompat = new MediaSessionCompat(context, "questland_media_session");
     }
 
     private void createCustomNotificationChannel(Context context){
@@ -88,13 +101,17 @@ public class BackgroundDownload {
 
         //customowa notyfikacja po przywróceniu pobierania
 //        createCustomNotificationChannel(context);
-//        createCustomNotification(context);
+//        createCustomNotification(context, false);
     }
 
-    private void createCustomNotification(Context context) {
+    private void createCustomNotification(Context context, boolean isNewDownload) {
+        String notificationTitle = (isNewDownload) ? "Questland - download started " : "Questland - download restored";
+
         notificationBuilder = new NotificationCompat.Builder(context, DOWNLOAD_NOTIFICATION_CHANNEL_ID);
         notificationBuilder.setSmallIcon(R.drawable.icon)
-                .setContentTitle("Questland Test")
+                .setLargeIcon(largeIcon)
+                //.setStyle(mediaStyle.setMediaSession(mediaSessionCompat.getSessionToken()))
+                .setContentTitle(notificationTitle)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setOnlyAlertOnce(true)
                 .setOngoing(true);
@@ -115,7 +132,7 @@ public class BackgroundDownload {
                     int currentProgress = getPercentageProgress();
 
                     notificationBuilder.setProgress(PROGRESS_MAX, currentProgress, false)
-                            .setContentText("Download progress " + currentProgress + "%");
+                            .setContentText("Progress " + currentProgress + "%");
 
                     notificationManagerCompat.notify(notificationId, notificationBuilder.build());
 
@@ -127,7 +144,7 @@ public class BackgroundDownload {
                     }
                 }
 
-                notificationBuilder.setContentText("Questland file download complete")
+                notificationBuilder.setContentText("Questland  download completed.")
                         .setProgress(0,0,false)
                         .setOngoing(false);
 
@@ -151,7 +168,8 @@ public class BackgroundDownload {
         id = manager.enqueue(request);
 
         createCustomNotificationChannel(context);
-        createCustomNotification(context);
+        createCustomNotificationLook(context);
+        createCustomNotification(context, true);
 
         return id;
     }
