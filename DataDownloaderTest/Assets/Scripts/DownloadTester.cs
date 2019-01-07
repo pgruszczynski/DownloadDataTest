@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DownloadTester : MonoBehaviour
 {
-    private const string POSTFIX = ".data";
+    private const string POSTFIX = ".avi";
 
     [SerializeField] private string[] _testURIs;
     [SerializeField] private string _dataPath;
