@@ -117,8 +117,13 @@ public class DownloadTester : MonoBehaviour
         }
 
         BackgroundDownload download = BackgroundDownload.backgroundDownloads[0];
+
+        foreach (var d in BackgroundDownload.backgroundDownloads) 
+        {
+            Debug.Log("DOWNLOAD TESTER: ResumeDownload() Dostepne pobierania: "+download.config.url + " " + download.config.filePath);
+        }
         
-        Debug.Log("DOWNLOAD TESTER: ResumeDownload() Przywracam pobieranie: url "+download.config.url + " " + download.config.filePath);
+        Debug.Log("DOWNLOAD TESTER: ResumeDownload() Przywracam pobieranie[0]: url "+download.config.url + " " + download.config.filePath);
 
         
         yield return StartCoroutine(UpdateCurrentDownloadProgress(download));

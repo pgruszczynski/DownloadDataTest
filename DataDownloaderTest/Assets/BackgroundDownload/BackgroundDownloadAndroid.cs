@@ -208,10 +208,12 @@ namespace Unity.Networking
             _download.Call("remove");
         }
 
-        void RemoveNotification()
+        public void RemoveNotification()
         {
             using (AndroidJavaObject activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity"))
             {
+                Debug.Log("=========== ANDROID PLUGIN: 1. RemoveNotification(): usuwam notyfikację pobierania ");
+
                 _download.Call("removeCustomNotification", activity);
             }
         }
@@ -233,7 +235,7 @@ namespace Unity.Networking
             Debug.Log("=========== ANDROID PLUGIN: 1. Dispose(): usuwam smieci ");
 
             //RemoveDownload();    - downloaded file will be removed after download
-            RemoveNotification();
+            //RemoveNotification();
             base.Dispose();
         }
 
@@ -277,7 +279,10 @@ namespace Unity.Networking
 
         internal static void SaveDownloads(Dictionary<string, BackgroundDownload> downloads)
         {
-            Debug.Log("=========== ANDROID PLUGIN: 1. SaveDownloads(): Proba zapisu " + downloads.Keys + " val " + downloads.Values);
+            foreach (var kV in downloads)
+            {
+                Debug.Log("=========== ANDROID PLUGIN: 1. SaveDownloads(): Proba zapisu " + kV.Key + " val " +  kV.Value);
+            }
 
             var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (downloads.Count > 0)

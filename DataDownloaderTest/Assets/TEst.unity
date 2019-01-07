@@ -920,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testURIs:
   - http://ipv4.download.thinkbroadband.com/50MB.zip
+  - http://ipv4.download.thinkbroadband.com/50MB.zip
   _dataPath: files/
   _downloadProgress: {fileID: 1274212837}
   _downloadProgressText: {fileID: 22948218}
