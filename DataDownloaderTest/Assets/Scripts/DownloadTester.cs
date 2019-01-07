@@ -73,6 +73,18 @@ public class DownloadTester : MonoBehaviour
             
         }
     }
+    
+    private IEnumerator DEBUG_StartDownloadSample()
+    {
+        using (var download = BackgroundDownload.Start(new Uri("http://ipv4.download.thinkbroadband.com/50MB.zip"), "files/file.data"))
+        {
+            yield return download;
+            if (download.status == BackgroundDownloadStatus.Failed)
+                Debug.Log(download.error);
+            else
+                Debug.Log("DONE downloading file");
+        }
+    }
 
     private IEnumerator UpdateCurrentDownloadProgress(BackgroundDownload download, string downloadFilePath = null)
     {
