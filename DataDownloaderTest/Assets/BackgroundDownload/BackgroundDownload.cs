@@ -90,12 +90,31 @@ namespace Unity.Networking
 
         public static BackgroundDownload Start(BackgroundDownloadConfig config)
         {
+            
+            Debug.Log("=========== BackgroundDownloadRoot : Start() ");
+            Debug.Log("1.Start() Sprawdzam pobierane pliki z LoadDownloads() ");
+
             LoadDownloads();
+
             if (_downloads.ContainsKey(config.filePath))
-                throw new ArgumentException("Download of this file is already present");
+            {
+                throw new ArgumentException("FATAL ERROR : Start() : Download of this file is already present");
+            }
+            
+            Debug.Log("2.Start() Tworze instancje pobierania zależnie od platformy");
+
             var download = new BackgroundDownloadimpl(config);
+            
+            Debug.Log("3.Start() Dodaje pobieranie ze sciezka " + config.filePath + " download status " + download);
+
             _downloads.Add(config.filePath, download);
+            
+            Debug.Log("4.Start() zapisuje pobieranie");
+
             SaveDownloads();
+            
+            Debug.Log("5.Start() Ok - zwracam pobvieranie" );
+
             return download;
         }
 
@@ -137,7 +156,12 @@ namespace Unity.Networking
 
         public virtual void Dispose()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : Dispose() ");
+
             _downloads.Remove(_config.filePath);
+            
+            Debug.Log("1. Dispose() - zapisuje pliki przed usunieciem");
+
             SaveDownloads();
             if (_status == BackgroundDownloadStatus.Downloading)
             {
@@ -148,12 +172,16 @@ namespace Unity.Networking
 
         static void LoadDownloads()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : LoadDownloads() ");
+
             if (_downloads == null)
                 _downloads = BackgroundDownloadimpl.LoadDownloads();
         }
 
         static void SaveDownloads()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : SaveDownloads() ");
+
             BackgroundDownloadimpl.SaveDownloads(_downloads);
         }
     }

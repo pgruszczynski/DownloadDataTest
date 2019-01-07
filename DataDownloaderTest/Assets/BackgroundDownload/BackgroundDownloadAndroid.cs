@@ -112,9 +112,10 @@ namespace Unity.Networking
                             _download.Call("addRequestHeader", header.Key, val);
             var activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity");
             
-            Debug.Log("4. BackgroundDownloadAndroid(config konstruktor): Ustawiam id pobierania");
-
             _id = _download.Call<long>("start", activity);
+            
+            Debug.Log("4. BackgroundDownloadAndroid(config konstruktor): Ustawiam id pobierania " + _id);
+
         }
 
         BackgroundDownloadAndroid(long id, AndroidJavaObject download)
