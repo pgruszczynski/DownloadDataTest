@@ -130,13 +130,19 @@ namespace Unity.Networking
 
         static BackgroundDownloadAndroid Recreate(long id)
         {
+            Debug.Log("=========== ANDROID PLUGIN: Recreate(): Próbuje przywrocić pobieranie");
+
             try
             {
                 SetupBackendStatics();
                 var activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity");
                 var download = _backgroundDownloadClass.CallStatic<AndroidJavaObject>("recreate", activity, id);
+                Debug.Log("=========== ANDROID PLUGIN: Recreate(): Czy moge przywrocić pobieranie? Object download status " + (download != null));
+
                 if (download != null)
+                {
                     return new BackgroundDownloadAndroid(id, download);
+                }
             }
             catch (Exception e)
             {
