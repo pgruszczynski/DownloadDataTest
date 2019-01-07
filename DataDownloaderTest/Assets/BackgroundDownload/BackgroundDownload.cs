@@ -113,7 +113,7 @@ namespace Unity.Networking
 
             SaveDownloads();
             
-            Debug.Log("5.Start() Ok - zwracam pobvieranie" );
+            Debug.Log("5.Start() Ok - zwracam pobieranie" );
 
             return download;
         }
@@ -175,7 +175,11 @@ namespace Unity.Networking
             Debug.Log("=========== BackgroundDownloadRoot : LoadDownloads() ");
 
             if (_downloads == null)
+            {
+                Debug.Log("1. LoadDownloads() Aktualne pobieranie puste - wczytuje dostepne / tworze nowe");
+
                 _downloads = BackgroundDownloadimpl.LoadDownloads();
+            }
         }
 
         static void SaveDownloads()

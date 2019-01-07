@@ -25,76 +25,96 @@ public class DownloadTester : MonoBehaviour
         StartCoroutine(GetFilesRoutine());
     }
 
+    public void RestorePreviouslyDownloadedFiles()
+    {
+        StartCoroutine(RestorePreviouslyDownloadedFilesRoutine());
+    }
+
+    private IEnumerator RestorePreviouslyDownloadedFilesRoutine()
+    {
+        yield return StartCoroutine(ResumeDownload());
+    }
+
     private IEnumerator GetFilesRoutine()
     {
         
         for(int i=0; i<_testURIs.Length; i++)
         {
-            yield return StartCoroutine(StartDownload((currentFileSize) =>
+            yield return StartCoroutine(StartDownload(() =>
             {
-                megabytesToDownload += currentFileSize;
-                _downloadProgress.value = Mathf.Clamp01(_downloadProgress.value);
+                _downloadProgress.value = 1.0f;
                 _downloadProgressText.text = "1.0";
             },  _testURIs[i], i.ToString()));
             
         }
     }
     
-    private IEnumerator StartDownload(Action<float> onDownloadCompleted, string testURI, string fileName)
+    
+    private IEnumerator StartDownload(Action onDownloadCompleted, string testURI, string fileName)
     {
-        using (BackgroundDownload download = BackgroundDownload.Start(new Uri(testURI), _dataPath+fileName+POSTFIX))
+        string downloadFilePath = string.Format("{0}{1}{2}", _dataPath,fileName,POSTFIX); 
+        
+        using (BackgroundDownload download = BackgroundDownload.Start(new Uri(testURI), downloadFilePath))
         {
-            float downloadProgress;
-
-            while (download.keepWaiting)
-            {
-                downloadProgress = download.progress;
-                _downloadProgress.value = downloadProgress;
-                _downloadProgressText.text = downloadProgress.ToString();
-                
-                _downloadLog.text = string.Format("Started downloads = {0}\nFilename = {1} ",
-                    BackgroundDownload.backgroundDownloads.Length, fileName);
-                yield return _downloadDelay;
-            }
-
-            yield return download;
+            yield return StartCoroutine(UpdateCurrentDownloadProgress(download, downloadFilePath));
 
             if (onDownloadCompleted != null)
             {
-                onDownloadCompleted(download.TotalFileSizeMegabytes);
+                onDownloadCompleted();
             }
 
             if (download.status == BackgroundDownloadStatus.Failed)
                 Debug.Log(download.error);
             else
             {
-                //download.Dispose();
+                download.Dispose();
                 Debug.Log("DONE downloading file");
             }
+            
         }
     }
 
+    private IEnumerator UpdateCurrentDownloadProgress(BackgroundDownload download, string downloadFilePath = null)
+    {
+
+        if (string.IsNullOrEmpty(downloadFilePath) == false)
+        {
+            _downloadLog.text = string.Format("Started downloads = {0}\nPersistent path = {1} ",
+                BackgroundDownload.backgroundDownloads.Length, downloadFilePath);
+        }
+        
+        float downloadProgress;
+
+        while (download.keepWaiting)
+        {
+            downloadProgress = download.progress;
+            _downloadProgress.value = downloadProgress;
+            _downloadProgressText.text = downloadProgress.ToString();
+
+            yield return _downloadDelay;
+        }
+    }
 
     private IEnumerator ResumeDownload()
     {
         if (BackgroundDownload.backgroundDownloads.Length == 0)  
         {
+            Debug.Log("DOWNLOAD TESTER: ResumeDownload() -  no previous downloads. Breaking here.");
             yield break;
         }
 
         BackgroundDownload download = BackgroundDownload.backgroundDownloads[0];
-        yield return download;
+        
+        Debug.Log("DOWNLOAD TESTER: ResumeDownload() Przywracam pobieranie: url "+download.config.url + " " + download.config.filePath);
+
+        
+        yield return StartCoroutine(UpdateCurrentDownloadProgress(download));
+
+        //yield return download;
         
         download.Dispose();
     }
 
-
-    private void OnEnable()
-    {
-        //StartCoroutine(ResumeDownload());
-    }
-    
-    
     
     private void OnDisable()
     {

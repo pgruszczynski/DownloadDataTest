@@ -46,6 +46,7 @@ public class BackgroundDownload {
     // notyfikacje
     private NotificationCompat.Builder notificationBuilder;
     private NotificationManager notificationManager;
+    private NotificationManagerCompat notificationManagerCompat;
     private NotificationChannel notificationChannel;
     // customowa download notyfikacja
     // ewentualnei dodać do res/values/strings.xml
@@ -97,8 +98,8 @@ public class BackgroundDownload {
         destinationUri = dest;
 
         //customowa notyfikacja po przywróceniu pobierania
-//        createCustomNotificationChannel(context);
-//        createCustomNotification(context, false);
+        createCustomNotificationChannel(context);
+        createCustomNotification(context, false);
     }
 
     private void createCustomNotification(Context context, boolean isNewDownload) {
@@ -113,7 +114,7 @@ public class BackgroundDownload {
                 .setOnlyAlertOnce(true)
                 .setOngoing(true);
 
-        final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        notificationManagerCompat = NotificationManagerCompat.from(context);
 
         final int PROGRESS_MAX = 100;
 
@@ -169,6 +170,17 @@ public class BackgroundDownload {
         createCustomNotification(context, true);
 
         return id;
+    }
+
+    public void removeCustomNotification(Context context){
+        if(notificationBuilder == null || notificationManagerCompat == null){
+            return;
+        }
+
+        notificationBuilder.setProgress(0,0,false)
+                .setOngoing(false);
+        notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+
     }
 
     public void addRequestHeader(String name, String value) {

@@ -73,7 +73,7 @@ namespace Unity.Networking
             }
             else
             {
-                Debug.Log("1. BackgroundDownloadAndroid(config konstruktor): Tworze katalog pobran z filepath " + filePath);
+                Debug.Log("1. BackgroundDownloadAndroid(config konstruktor): Tworze sciezke w ktorej ma zostac zapisany plik - filepath " + filePath);
 
                 var dir = Path.GetDirectoryName(filePath);
                 if (!Directory.Exists(dir))
@@ -183,7 +183,7 @@ namespace Unity.Networking
 
         void CheckFinished()
         {
-            Debug.Log("=========== ANDROID PLUGIN: 1. CheckFinished(): Sprawdzam czy pobrano plik" + _status);
+            Debug.Log("=========== ANDROID PLUGIN: 1. CheckFinished(): Sprawdzam czy pobrano plik " + _status);
 
             if (_status == BackgroundDownloadStatus.Downloading)
             {
@@ -268,7 +268,7 @@ namespace Unity.Networking
 
         internal static void SaveDownloads(Dictionary<string, BackgroundDownload> downloads)
         {
-            Debug.Log("=========== ANDROID PLUGIN: 1. SaveDownloads(): Zapis id pobieran ");
+            Debug.Log("=========== ANDROID PLUGIN: 1. SaveDownloads(): Proba zapisu " + downloads.Keys + " val " + downloads.Values);
 
             var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (downloads.Count > 0)
@@ -277,8 +277,12 @@ namespace Unity.Networking
 
                 var ids = new string[downloads.Count];
                 int i = 0;
+                
+                Debug.Log("3. SaveDownloads(): Ids : " + ids);
+
                 foreach (var dl in downloads)
                 {
+                    Debug.Log("4. SaveDownloads(): Sprawdzam pobierania : " + ids[i] + " value " +  ((BackgroundDownloadAndroid)dl.Value)._id.ToString());
                     ids[i++] = ((BackgroundDownloadAndroid)dl.Value)._id.ToString();
                 }
                 File.WriteAllLines(file, ids);
