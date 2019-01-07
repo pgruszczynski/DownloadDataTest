@@ -682,7 +682,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1080122137}
-        m_MethodName: GetFiles
+        m_MethodName: RestorePreviouslyDownloadedFiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -919,8 +919,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _testURIs:
-  - http://ipv4.download.thinkbroadband.com/50MB.zip
-  - http://ipv4.download.thinkbroadband.com/50MB.zip
+  - http://mirrors.standaloneinstaller.com/video-sample/metaxas-keller-Bell.avi
+  - http://mirrors.standaloneinstaller.com/video-sample/metaxas-keller-Bell.avi
   _dataPath: files/
   _downloadProgress: {fileID: 1274212837}
   _downloadProgressText: {fileID: 22948218}
