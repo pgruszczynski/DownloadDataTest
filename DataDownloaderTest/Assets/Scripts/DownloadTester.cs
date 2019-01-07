@@ -15,11 +15,10 @@ public class DownloadTester : MonoBehaviour
     [SerializeField] private Slider _downloadProgress;
     [SerializeField] private Text _downloadProgressText;
     [SerializeField] private Text _downloadLog;
-    [SerializeField] private Text _sizeText;
 
     [SerializeField] private float megabytesToDownload;
     
-    private WaitForSeconds _downloadDelay = new WaitForSeconds(0.5f);
+    private WaitForSeconds _downloadDelay = new WaitForSeconds(1.0f);
 
     public void GetFiles()
     {
@@ -34,11 +33,10 @@ public class DownloadTester : MonoBehaviour
             yield return StartCoroutine(StartDownload((currentFileSize) =>
             {
                 megabytesToDownload += currentFileSize;
-                _downloadProgress.value = 1.0f;
+                _downloadProgress.value = Mathf.Clamp01(_downloadProgress.value);
                 _downloadProgressText.text = "1.0";
             },  _testURIs[i], i.ToString()));
             
-            _sizeText.text = "Downloaded data size (mb): " + megabytesToDownload;
         }
     }
     
@@ -54,12 +52,17 @@ public class DownloadTester : MonoBehaviour
                 _downloadProgress.value = downloadProgress;
                 _downloadProgressText.text = downloadProgress.ToString();
                 
-                _downloadLog.text = string.Format("Started downloads = {0}\nFile size = {1} MB\nFilename = {2} ",
-                    BackgroundDownload.backgroundDownloads.Length, download.TotalFileSizeMegabytes, fileName);
+                _downloadLog.text = string.Format("Started downloads = {0}\nFilename = {1} ",
+                    BackgroundDownload.backgroundDownloads.Length, fileName);
                 yield return _downloadDelay;
             }
 
-            onDownloadCompleted(download.TotalFileSizeMegabytes);
+            yield return download;
+
+            if (onDownloadCompleted != null)
+            {
+                onDownloadCompleted(download.TotalFileSizeMegabytes);
+            }
 
             if (download.status == BackgroundDownloadStatus.Failed)
                 Debug.Log(download.error);

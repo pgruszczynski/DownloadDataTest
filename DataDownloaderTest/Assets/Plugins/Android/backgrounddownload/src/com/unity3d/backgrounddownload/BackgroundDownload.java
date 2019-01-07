@@ -1,8 +1,6 @@
 package com.unity3d.backgrounddownload;
 
-import android.app.Application;
 import android.app.DownloadManager;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -11,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.media.session.MediaSessionCompat;
@@ -137,14 +134,14 @@ public class BackgroundDownload {
                     notificationManagerCompat.notify(notificationId, notificationBuilder.build());
 
                     try{
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                     }
                     catch(InterruptedException e){
                         e.printStackTrace();
                     }
                 }
 
-                notificationBuilder.setContentText("Questland  download completed.")
+                notificationBuilder.setContentText("Questland download completed.")
                         .setProgress(0,0,false)
                         .setOngoing(false);
 

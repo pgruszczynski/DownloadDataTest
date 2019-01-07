@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Tadeusz\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Tadeusz\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_DataDownloaderTest.-971669656.00" t="ExcludeRecursive" />
-    <e p="I:\Unity Projects\_Praca(Gamesture)\DownloadDataTest\DataDownloaderTest" t="IncludeRecursive">
+    <e p="C:\Users\Przemek Gruszczyński\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Przemek Gruszczyński\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_DataDownloaderTest.-979433181.00" t="ExcludeRecursive" />
+    <e p="D:\UnityProjects\DataDownloadTest\DownloadDataTest\DataDownloaderTest" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets\BackgroundDownload" t="Include">
         <e p="BackgroundDownload.asmdef" t="Include" />
