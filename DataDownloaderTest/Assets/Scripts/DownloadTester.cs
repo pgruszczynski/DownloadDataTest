@@ -64,10 +64,11 @@ public class DownloadTester : MonoBehaviour
             }
 
             if (download.status == BackgroundDownloadStatus.Failed)
+            {
                 Debug.Log(download.error);
+            }
             else
             {
-                download.Dispose();
                 Debug.Log("DONE downloading file");
             }
             

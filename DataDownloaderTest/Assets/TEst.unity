@@ -920,7 +920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testURIs:
   - http://ipv4.download.thinkbroadband.com/50MB.zip
-  - http://ipv4.download.thinkbroadband.com/100MB.zip
   _dataPath: files/
   _downloadProgress: {fileID: 1274212837}
   _downloadProgressText: {fileID: 22948218}
@@ -982,7 +981,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 54
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

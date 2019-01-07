@@ -208,6 +208,14 @@ namespace Unity.Networking
             _download.Call("remove");
         }
 
+        void RemoveNotification()
+        {
+            using (AndroidJavaObject activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity"))
+            {
+                _download.Call("removeCustomNotification", activity);
+            }
+        }
+
         public override bool keepWaiting { get { return _status == BackgroundDownloadStatus.Downloading; } }
 
         protected override float GetProgress()
@@ -224,7 +232,8 @@ namespace Unity.Networking
         {
             Debug.Log("=========== ANDROID PLUGIN: 1. Dispose(): usuwam smieci ");
 
-            RemoveDownload();
+            //RemoveDownload();    - downloaded file will be removed after download
+            RemoveNotification();
             base.Dispose();
         }
 

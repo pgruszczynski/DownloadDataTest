@@ -34,7 +34,7 @@ public class CompletionReceiver extends BroadcastReceiver {
                 // if app quits, callback can be not-null, but is invalid (C# side destroyed)
                 // this is fine: we will pick the status next time app is launched
                 // this is to due to race-condition: C# object destroyed, Java not yet
-                Log.v("UPE_COMPLETION_RECEIVER", "Picking last download when restarted");
+                Log.v("UPE_COMPLETION_RECEIVER", "I/Unity - my log: Picking last download when restarted");
                 callback = null;
             }
         }
