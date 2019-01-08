@@ -105,7 +105,7 @@ namespace Unity.Networking
 
             var download = new BackgroundDownloadimpl(config);
             
-            Debug.Log("3.Start() Dodaje pobieranie ze sciezka " + config.filePath + " download status " + download);
+            Debug.Log("3.Start() Dodaje pobieranie ze sciezka " + config.filePath + " download status " + download.status);
 
             _downloads.Add(config.filePath, download);
             
@@ -156,13 +156,16 @@ namespace Unity.Networking
 
         public virtual void Dispose()
         {
-            Debug.Log("=========== BackgroundDownloadRoot : Dispose() ");
+            Debug.Log("=========== BackgroundDownloadRoot : Dispose() usuwam pobieranie ze slownika downloads " + _config.filePath);
 
             _downloads.Remove(_config.filePath);
             
             Debug.Log("1. Dispose() - zapisuje pliki przed usunieciem");
 
             SaveDownloads();
+            
+            Debug.Log("1. Dispose() - Sprawdzam status pobierania " + _status);
+
             if (_status == BackgroundDownloadStatus.Downloading)
             {
                 _status = BackgroundDownloadStatus.Failed;

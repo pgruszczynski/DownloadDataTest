@@ -155,9 +155,11 @@ namespace Unity.Networking
 
         Uri QueryDownloadUri()
         {
-            Debug.Log("=========== ANDROID PLUGIN: 1. QueryDownloadUri(): Pobieram uri pliku");
-
-            return new Uri(_download.Call<string>("getDownloadUrl"));
+            Uri downloadURI = new Uri(_download.Call<string>("getDownloadUrl"));
+            
+            Debug.Log("=========== ANDROID PLUGIN: 1. QueryDownloadUri(): Pobieram uri pliku" + downloadURI);
+            
+            return downloadURI;
         }
 
         string QueryDestinationPath()
@@ -292,7 +294,7 @@ namespace Unity.Networking
                 var ids = new string[downloads.Count];
                 int i = 0;
                 
-                Debug.Log("3. SaveDownloads(): Ids : " + ids);
+                Debug.Log("3. SaveDownloads(): Ids : " + ids.Length);
 
                 foreach (var dl in downloads)
                 {

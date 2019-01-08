@@ -48,8 +48,36 @@ public class DownloadTester : MonoBehaviour
             
         }
     }
-    
-    
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+    }
+
+    private void OnApplicationQuit()
+    {
+        Debug.Log("User EXIT === DOWNLOAD TESTER: OnApplicationQuit() - zamykam apke");
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("DESTROY !!!!!!!! === DOWNLOAD TESTER: OnApplicationQuit() - niszcze");
+
+    }
+
+
     private IEnumerator StartDownload(Action onDownloadCompleted, string testURI, string fileName)
     {
         string downloadFilePath = string.Format("{0}{1}{2}", _dataPath,fileName,POSTFIX); 
@@ -74,6 +102,7 @@ public class DownloadTester : MonoBehaviour
             
         }
     }
+
     
     private IEnumerator DEBUG_StartDownloadSample()
     {
@@ -89,7 +118,9 @@ public class DownloadTester : MonoBehaviour
 
     private IEnumerator UpdateCurrentDownloadProgress(BackgroundDownload download, string downloadFilePath = null)
     {
+        Debug.Log("DOWNLOAD TESTER: UpdateCurrentDownloadProgress() - probuje zaladowac progress");
 
+        
         if (string.IsNullOrEmpty(downloadFilePath) == false)
         {
             _downloadLog.text = string.Format("Started downloads = {0}\nPersistent path = {1} ",
@@ -97,13 +128,21 @@ public class DownloadTester : MonoBehaviour
         }
         
         float downloadProgress;
+        
+        Debug.Log("DOWNLOAD TESTER: UpdateCurrentDownloadProgress() - status pobierania " + download.status);
 
         while (download.keepWaiting)
         {
+            
+            
             downloadProgress = download.progress;
+
+            Debug.Log("DOWNLOAD TESTER: UpdateCurrentDownloadProgress() - progress " + downloadProgress + " download available " + (download != null));
+            
+            
             _downloadProgress.value = downloadProgress;
             _downloadProgressText.text = downloadProgress.ToString();
-
+            
             yield return _downloadDelay;
         }
     }
@@ -112,7 +151,7 @@ public class DownloadTester : MonoBehaviour
     {
         if (BackgroundDownload.backgroundDownloads.Length == 0)  
         {
-            Debug.Log("DOWNLOAD TESTER: ResumeDownload() -  no previous downloads. Breaking here.");
+            Debug.Log("DOWNLOAD TESTER: ResumeDownload() -  brak dostepnych pobieran - przerywam");
             yield break;
         }
 
@@ -120,17 +159,17 @@ public class DownloadTester : MonoBehaviour
 
         foreach (var d in BackgroundDownload.backgroundDownloads) 
         {
-            Debug.Log("DOWNLOAD TESTER: ResumeDownload() Dostepne pobierania: "+download.config.url + " " + download.config.filePath);
+            Debug.Log("DOWNLOAD TESTER: ResumeDownload() Dostepne pobierania: "+download.config.url + " " + download.config.filePath+ " progress " + download.progress);
         }
         
-        Debug.Log("DOWNLOAD TESTER: ResumeDownload() Przywracam pobieranie[0]: url "+download.config.url + " " + download.config.filePath);
+        Debug.Log("DOWNLOAD TESTER: ResumeDownload() Przywracam pobieranie[0]: url "+download.config.url + " " + download.config.filePath+ " progress " + download.progress);
 
         
         yield return StartCoroutine(UpdateCurrentDownloadProgress(download));
 
-        //yield return download;
+        yield return download;
         
-        download.Dispose();
+        download.Dispose(); // do this after restored download is completed 
     }
 
     
