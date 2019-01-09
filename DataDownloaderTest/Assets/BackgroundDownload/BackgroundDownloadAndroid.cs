@@ -34,31 +34,56 @@ namespace Unity.Networking
 
         static void SetupBackendStatics()
         {
+            Debug.Log("=========== ANDROID PLUGIN: SetupBackendStatics(): ");
             if (_backgroundDownloadClass == null)
+            {
+                Debug.Log("1. SetupBackendStatics(): tworze instacje klasy javy Background download");
                 _backgroundDownloadClass = new AndroidJavaClass("com.unity3d.backgrounddownload.BackgroundDownload");
+            }
             if (_finishedCallback == null)
             {
+                Debug.Log("2. SetupBackendStatics(): tworze instacje receiver CompletionReceiver");
+
                 _finishedCallback = new Callback();
                 var receiver = new AndroidJavaClass("com.unity3d.backgrounddownload.CompletionReceiver");
                 receiver.CallStatic("setCallback", _finishedCallback);
             }
+
             if (_playerClass == null)
+            {
+                Debug.Log("3. SetupBackendStatics(): tworze instacje unityplayera");
+
                 _playerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            }
         }
 
         internal BackgroundDownloadAndroid(BackgroundDownloadConfig config)
             : base(config)
         {
+            
+            Debug.Log("=========== ANDROID PLUGIN: BackgroundDownloadAndroid(config konstruktor): tworze obiekt BackgroundDownloadAndroid");
+
             SetupBackendStatics();
             string filePath = Path.Combine(Application.persistentDataPath, config.filePath);
             if (File.Exists(filePath))
+            {
+                Debug.Log("1. BackgroundDownloadAndroid(config konstruktor): Usuwam katalog pobran z filepath " + filePath);
+
                 File.Delete(filePath);
+            }
             else
             {
+                Debug.Log("1. BackgroundDownloadAndroid(config konstruktor): Tworze sciezke w ktorej ma zostac zapisany plik - filepath " + filePath);
+
                 var dir = Path.GetDirectoryName(filePath);
                 if (!Directory.Exists(dir))
+                {
                     Directory.CreateDirectory(dir);
+                }
             }
+            
+            Debug.Log("2. BackgroundDownloadAndroid(config konstruktor): Tworze polityke pobierania");
+
             string fileUri = "file://" + filePath;
             bool allowMetered = false;
             bool allowRoaming = false;
@@ -74,6 +99,8 @@ namespace Unity.Networking
                 default:
                     break;
             }
+            Debug.Log("3. BackgroundDownloadAndroid(config konstruktor): Tworze natywny obiekt pobierania");
+
             _download = _backgroundDownloadClass.CallStatic<AndroidJavaObject>("create", config.url.AbsoluteUri, fileUri);
 
             _download.Call("setAllowMetered", allowMetered);
@@ -84,11 +111,17 @@ namespace Unity.Networking
                         foreach (var val in header.Value)
                             _download.Call("addRequestHeader", header.Key, val);
             var activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity");
+            
             _id = _download.Call<long>("start", activity);
+            
+            Debug.Log("4. BackgroundDownloadAndroid(config konstruktor): Ustawiam id pobierania " + _id);
+
         }
 
         BackgroundDownloadAndroid(long id, AndroidJavaObject download)
         {
+            Debug.Log("=========== ANDROID PLUGIN: BackgroundDownloadAndroid(id, download: konstruktor): tworze obiekt BackgroundDownloadAndroid");
+
             _id = id;
             _download = download;
             _config.url = QueryDownloadUri();
@@ -98,13 +131,19 @@ namespace Unity.Networking
 
         static BackgroundDownloadAndroid Recreate(long id)
         {
+            Debug.Log("=========== ANDROID PLUGIN: Recreate(): Próbuje przywrocić pobieranie");
+
             try
             {
                 SetupBackendStatics();
                 var activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity");
                 var download = _backgroundDownloadClass.CallStatic<AndroidJavaObject>("recreate", activity, id);
+                Debug.Log("=========== ANDROID PLUGIN: Recreate(): Czy moge przywrocić pobieranie? Object download status " + (download != null));
+
                 if (download != null)
+                {
                     return new BackgroundDownloadAndroid(id, download);
+                }
             }
             catch (Exception e)
             {
@@ -116,17 +155,26 @@ namespace Unity.Networking
 
         Uri QueryDownloadUri()
         {
-            return new Uri(_download.Call<string>("getDownloadUrl"));
+            Uri downloadURI = new Uri(_download.Call<string>("getDownloadUrl"));
+            
+            Debug.Log("=========== ANDROID PLUGIN: 1. QueryDownloadUri(): Pobieram uri pliku" + downloadURI);
+            
+            return downloadURI;
         }
 
         string QueryDestinationPath()
         {
+            Debug.Log("=========== ANDROID PLUGIN: 1. QueryDestinationPath(): Pobieram destination path");
+
             string uri = _download.Call<string>("getDestinationUri");
             string basePath = Application.persistentDataPath;
             var pos = uri.IndexOf(basePath);
             pos += basePath.Length;
             if (uri[pos] == '/')
                 ++pos;
+            
+            Debug.Log("1. QueryDestinationPath(): sciezka substringu "+uri.Substring(pos));
+
             return uri.Substring(pos);
         }
 
@@ -137,14 +185,21 @@ namespace Unity.Networking
 
         void CheckFinished()
         {
+            Debug.Log("=========== ANDROID PLUGIN: 1. CheckFinished(): Sprawdzam czy pobrano plik " + _status);
+
             if (_status == BackgroundDownloadStatus.Downloading)
             {
                 int status = _download.Call<int>("checkFinished");
                 if (status == 1)
+                {
                     _status = BackgroundDownloadStatus.Done;
+                    Debug.Log("1. CheckFinished(): Status == 1 ? " + _status);
+                }
                 else if (status < 0)
                 {
                     _status = BackgroundDownloadStatus.Failed;
+                    Debug.Log("1. CheckFinished(): Status != 1 ERROR " + GetError());
+
                     _error = GetError();
                 }
             }
@@ -152,7 +207,17 @@ namespace Unity.Networking
 
         void RemoveDownload()
         {
-            _download.Call("remove");
+            _download.Call("removeDownload");
+        }
+
+        public void RemoveNotification()
+        {
+            using (AndroidJavaObject activity = _playerClass.GetStatic<AndroidJavaObject>("currentActivity"))
+            {
+                Debug.Log("=========== ANDROID PLUGIN: 1. RemoveNotification(): usuwam notyfikację pobierania ");
+
+                _download.Call("removeCustomNotification", activity);
+            }
         }
 
         public override bool keepWaiting { get { return _status == BackgroundDownloadStatus.Downloading; } }
@@ -162,32 +227,47 @@ namespace Unity.Networking
             return _download.Call<float>("getProgress");
         }
 
-        protected override int GetFileSize()
-        {
-            return _download.Call<int>("getTotalFilesizeBytes");
-        }
-
         public override void Dispose()
         {
-            RemoveDownload();
+            Debug.Log("=========== ANDROID PLUGIN: 1. Dispose(): usuwam smieci ");
+
+            //RemoveDownload();    - downloaded file will be removed after download
+            //RemoveNotification();
             base.Dispose();
         }
 
         internal static Dictionary<string, BackgroundDownload> LoadDownloads()
         {
+            Debug.Log("=========== ANDROID PLUGIN: 1. LoadDownloads(): Laduje pobrane pliki ");
+
             var downloads = new Dictionary<string, BackgroundDownload>();
             var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (File.Exists(file))
             {
+                Debug.Log("1. LoadDownloads(): Plik z id pobieran istnieje ");
+
                 foreach (var line in File.ReadAllLines(file))
+                {
+                    Debug.Log("2. LoadDownloads(): Czytam pobrane id z pliku" + line);
+
                     if (!string.IsNullOrEmpty(line))
                     {
+                        Debug.Log("3. LoadDownloads(): Odtwarzam pobieranie o id" + long.Parse(line));
+
                         long id = long.Parse(line);
                         var dl = Recreate(id);
+
                         if (dl != null)
+                        {
+                            Debug.Log("4. LoadDownloads(): Udało się odtworzyc pobieranie");
+
                             downloads[dl.config.filePath] = dl;
+                        }
                     }
+                }
             }
+
+            Debug.Log("5. LoadDownloads() zapisuje dane na temat id pobieran  ");
 
             // some loads might have failed, save the actual state
             SaveDownloads(downloads);
@@ -196,17 +276,33 @@ namespace Unity.Networking
 
         internal static void SaveDownloads(Dictionary<string, BackgroundDownload> downloads)
         {
+            foreach (var kV in downloads)
+            {
+                Debug.Log("=========== ANDROID PLUGIN: 1. SaveDownloads(): Proba zapisu " + kV.Key + " val " +  kV.Value);
+            }
+
             var file = Path.Combine(Application.persistentDataPath, "unity_background_downloads.txt");
             if (downloads.Count > 0)
             {
+                Debug.Log("2. SaveDownloads(): Aktywne pobierania "+downloads.Count);
+
                 var ids = new string[downloads.Count];
                 int i = 0;
+                
+                Debug.Log("3. SaveDownloads(): Ids : " + ids.Length);
+
                 foreach (var dl in downloads)
+                {
+                    Debug.Log("4. SaveDownloads(): Sprawdzam pobierania : " + ids[i] + " value " +  ((BackgroundDownloadAndroid)dl.Value)._id.ToString());
                     ids[i++] = ((BackgroundDownloadAndroid)dl.Value)._id.ToString();
+                }
                 File.WriteAllLines(file, ids);
             }
             else if (File.Exists(file))
+            {
+                Debug.Log("2. SaveDownloads(): Usuwam plik z pobieraniami ");
                 File.Delete(file);
+            }
         }
     }
 

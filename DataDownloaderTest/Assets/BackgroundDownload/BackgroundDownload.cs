@@ -90,12 +90,31 @@ namespace Unity.Networking
 
         public static BackgroundDownload Start(BackgroundDownloadConfig config)
         {
+            
+            Debug.Log("=========== BackgroundDownloadRoot : Start() ");
+            Debug.Log("1.Start() Sprawdzam pobierane pliki z LoadDownloads() ");
+
             LoadDownloads();
+
             if (_downloads.ContainsKey(config.filePath))
-                throw new ArgumentException("Download of this file is already present");
+            {
+                throw new ArgumentException("FATAL ERROR : Start() : Download of this file is already present");
+            }
+            
+            Debug.Log("2.Start() Tworze instancje pobierania zależnie od platformy");
+
             var download = new BackgroundDownloadimpl(config);
+            
+            Debug.Log("3.Start() Dodaje pobieranie ze sciezka " + config.filePath + " download status " + download.status);
+
             _downloads.Add(config.filePath, download);
+            
+            Debug.Log("4.Start() zapisuje pobieranie");
+
             SaveDownloads();
+            
+            Debug.Log("5.Start() Ok - zwracam pobieranie" );
+
             return download;
         }
 
@@ -127,18 +146,20 @@ namespace Unity.Networking
 
         public float progress { get { return GetProgress(); } }
 
-        public float TotalFileSizeMegabytes
-        {
-            get { return (float)GetFileSize()/(1024*1024); }
-        }
-
-        protected abstract int GetFileSize();
         protected abstract float GetProgress();
 
         public virtual void Dispose()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : Dispose() usuwam pobieranie ze slownika downloads " + _config.filePath);
+
             _downloads.Remove(_config.filePath);
+            
+            Debug.Log("1. Dispose() - zapisuje pliki przed usunieciem");
+
             SaveDownloads();
+            
+            Debug.Log("1. Dispose() - Sprawdzam status pobierania " + _status);
+
             if (_status == BackgroundDownloadStatus.Downloading)
             {
                 _status = BackgroundDownloadStatus.Failed;
@@ -148,12 +169,20 @@ namespace Unity.Networking
 
         static void LoadDownloads()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : LoadDownloads() ");
+
             if (_downloads == null)
+            {
+                Debug.Log("1. LoadDownloads() Aktualne pobieranie puste - wczytuje dostepne / tworze nowe");
+
                 _downloads = BackgroundDownloadimpl.LoadDownloads();
+            }
         }
 
         static void SaveDownloads()
         {
+            Debug.Log("=========== BackgroundDownloadRoot : SaveDownloads() ");
+
             BackgroundDownloadimpl.SaveDownloads(_downloads);
         }
     }
