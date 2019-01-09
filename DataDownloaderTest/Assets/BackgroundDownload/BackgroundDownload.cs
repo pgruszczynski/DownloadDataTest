@@ -146,12 +146,6 @@ namespace Unity.Networking
 
         public float progress { get { return GetProgress(); } }
 
-        public float TotalFileSizeMegabytes
-        {
-            get { return (float)GetFileSize()/(1024*1024); }
-        }
-
-        protected abstract int GetFileSize();
         protected abstract float GetProgress();
 
         public virtual void Dispose()

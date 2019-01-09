@@ -227,11 +227,6 @@ namespace Unity.Networking
             return _download.Call<float>("getProgress");
         }
 
-        protected override int GetFileSize()
-        {
-            return _download.Call<int>("getTotalFilesizeBytes");
-        }
-
         public override void Dispose()
         {
             Debug.Log("=========== ANDROID PLUGIN: 1. Dispose(): usuwam smieci ");

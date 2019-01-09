@@ -51,8 +51,6 @@ public class BackgroundDownload {
     private int totalFilesizeBytes;
     private String error;
 
-    // servises
-    Intent garbageRemoveServiceIntent;
 
     // notyfikacje
     public static int downloadNotificationId = 9696;
@@ -191,7 +189,7 @@ public class BackgroundDownload {
     }
 
     private void createServiceToRemoveGarbage(Context context){
-        garbageRemoveServiceIntent = new Intent(context, BackgroundDownloadKillService.class);
+        Intent garbageRemoveServiceIntent = new Intent(context, BackgroundDownloadKillService.class);
         context.startService(garbageRemoveServiceIntent);
     }
 
