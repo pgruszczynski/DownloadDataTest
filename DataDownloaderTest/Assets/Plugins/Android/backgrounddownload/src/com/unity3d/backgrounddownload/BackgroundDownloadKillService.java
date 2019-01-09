@@ -1,12 +1,18 @@
 package com.unity3d.backgrounddownload;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 public class BackgroundDownloadKillService extends Service {
+
+    private NotificationManager notificationManagerKiller;
+    private String notificationString = Context.NOTIFICATION_SERVICE;
 
     @Nullable
     @Override
@@ -21,7 +27,7 @@ public class BackgroundDownloadKillService extends Service {
         /*
         DOPISĄĆ TUTAJ LOGIKE PRZY UBIJANIU APKIII
          */
-        BackgroundDownload.notificationManager.cancel(BackgroundDownload.downloadNotificationId);
+        RemoveRedundantNotification();
         this.stopSelf();
     }
 
@@ -39,7 +45,12 @@ public class BackgroundDownloadKillService extends Service {
         /*
         DOPISĄĆ TUTAJ LOGIKE PRZY UBIJANIU APKIII
          */
-        BackgroundDownload.notificationManager.cancel(BackgroundDownload.downloadNotificationId);
+        RemoveRedundantNotification();
         this.stopSelf();
+    }
+
+    private void RemoveRedundantNotification(){
+        notificationManagerKiller = (NotificationManager) getSystemService(notificationString);
+        notificationManagerKiller.cancel(BackgroundDownload.downloadNotificationId);
     }
 }

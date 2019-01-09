@@ -53,11 +53,10 @@ public class BackgroundDownload {
     private String error;
 
     // notyfikacje
-    public static NotificationManager notificationManager;
     public static int downloadNotificationId = 9696;
 
     private NotificationCompat.Builder notificationBuilder;
-
+    public NotificationManager notificationManager;
     private NotificationManagerCompat notificationManagerCompat;
     private NotificationChannel notificationChannel;
     // customowa download notyfikacja
