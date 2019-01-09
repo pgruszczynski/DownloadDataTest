@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,8 +53,11 @@ public class BackgroundDownload {
     private String error;
 
     // notyfikacje
+    public static NotificationManager notificationManager;
+    public static int downloadNotificationId = 9696;
+
     private NotificationCompat.Builder notificationBuilder;
-    private NotificationManager notificationManager;
+
     private NotificationManagerCompat notificationManagerCompat;
     private NotificationChannel notificationChannel;
     // customowa download notyfikacja
@@ -62,7 +66,6 @@ public class BackgroundDownload {
     private final String DOWNLOAD_NOTIFICATION_CHANNEL_ID = "QUESTLAND_CHANNEL_ID";
     private final String DOWNLOAD_CHANNEL_DESCRIPTION = "Questland download description";
     private int notificationImportance = NotificationManager.IMPORTANCE_DEFAULT;
-    private int notificationId = 9696;
 
     private Bitmap largeIcon;
     private android.support.v4.media.app.NotificationCompat.MediaStyle mediaStyle;
@@ -127,7 +130,7 @@ public class BackgroundDownload {
         final int PROGRESS_MAX = 100;
 
         notificationBuilder.setProgress(PROGRESS_MAX, 0, false);
-        notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+        notificationManagerCompat.notify(downloadNotificationId, notificationBuilder.build());
 
         new Thread(new Runnable() {
             @Override
@@ -140,7 +143,7 @@ public class BackgroundDownload {
                     notificationBuilder.setProgress(PROGRESS_MAX, currentProgress, false)
                             .setContentText("Progress " + currentProgress + "%");
 
-                    notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+                    notificationManagerCompat.notify(downloadNotificationId, notificationBuilder.build());
 
                     try{
                         Thread.sleep(1000);
@@ -154,7 +157,7 @@ public class BackgroundDownload {
                         .setProgress(0,0,false)
                         .setOngoing(false);
 
-                notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+                notificationManagerCompat.notify(downloadNotificationId, notificationBuilder.build());
 
             }
         }).start();
@@ -173,6 +176,11 @@ public class BackgroundDownload {
         manager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         id = manager.enqueue(request);
 
+        //only in start for test add to RECREATE!!!!!!!!!!!!!
+        Intent killingServiceIntent = new Intent(context, BackgroundDownloadKillService.class);
+        context.startService(killingServiceIntent);
+        //only in start for test add to RECREATE!!!!!!!!!!!!!
+
         createCustomNotificationChannel(context);
         createCustomNotificationLook(context);
         createCustomNotification(context, true);
@@ -187,7 +195,7 @@ public class BackgroundDownload {
 
         notificationBuilder.setProgress(0,0,false)
                 .setOngoing(false);
-        notificationManagerCompat.notify(notificationId, notificationBuilder.build());
+        notificationManagerCompat.notify(downloadNotificationId, notificationBuilder.build());
 
     }
 
@@ -305,9 +313,9 @@ public class BackgroundDownload {
         }
     }
 
-    public void remove() {
-            
+    public void removeDownload() {
         Log.d("UPE_FILE_REMOVE", "I/Unity - my log: Check download status " + checkFinished() + " download with id " + id + " will be removed");
+
         if (checkFinished() == 0){
             error = "Aborted";
         }

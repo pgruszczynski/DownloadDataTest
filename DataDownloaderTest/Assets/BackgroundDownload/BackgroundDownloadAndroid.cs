@@ -207,7 +207,7 @@ namespace Unity.Networking
 
         void RemoveDownload()
         {
-            _download.Call("remove");
+            _download.Call("removeDownload");
         }
 
         public void RemoveNotification()
