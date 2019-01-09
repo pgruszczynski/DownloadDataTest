@@ -37,7 +37,7 @@ public class BackgroundDownloadKillService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         Log.d("UNITY_QL_PLG_KILLER", "Service started - remember to kill notification with id "+BackgroundDownload.downloadNotificationId);
-        return Service.START_NOT_STICKY;
+        return Service.START_STICKY;
     }
 
     @Override

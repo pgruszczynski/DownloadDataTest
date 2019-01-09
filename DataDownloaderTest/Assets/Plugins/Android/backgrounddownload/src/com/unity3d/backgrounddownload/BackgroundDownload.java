@@ -52,6 +52,8 @@ public class BackgroundDownload {
     private String error;
 
 
+    //servives
+
     // notyfikacje
     public static int downloadNotificationId = 9696;
 
@@ -106,9 +108,8 @@ public class BackgroundDownload {
         downloadUri = url;
         destinationUri = dest;
 
-        // === Instantiate kill before creating notifications
+        // === Instantiate kill before creating notifications: EDIT: Try to also add service manager or start service just once
         createServiceToRemoveGarbage(context);
-        // ===
 
         createCustomNotificationChannel(context);
         createCustomNotification(context, false);
@@ -177,9 +178,9 @@ public class BackgroundDownload {
         manager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         id = manager.enqueue(request);
 
-        // === Instantiate kill before creating notifications
+        // === Instantiate kill before creating notifications: EDIT: Try to also add service manager or start service just once
+        // To run service each time new download starts remove if condition
         createServiceToRemoveGarbage(context);
-        // ===
 
         createCustomNotificationChannel(context);
         createCustomNotificationLook(context);
