@@ -23,30 +23,37 @@ public class BackgroundDownloadKillService extends Service {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Log.d("BDK_SERVICE", "Destroying redundant service with notification ID "+BackgroundDownload.downloadNotificationId);
+        Log.d("UNITY_QL_PLG_KILLER", "Destroying redundant service with notification ID "+BackgroundDownload.downloadNotificationId);
         /*
-        DOPISĄĆ TUTAJ LOGIKE PRZY UBIJANIU APKIII
+            Here add action to perform when app is killed/destroyed
          */
         RemoveRedundantNotification();
+        RemoveCurrentDownload();
+
         this.stopSelf();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.d("BDK_SERVICE", "Service started - remember to kill notification with id "+BackgroundDownload.downloadNotificationId);
+        Log.d("UNITY_QL_PLG_KILLER", "Service started - remember to kill notification with id "+BackgroundDownload.downloadNotificationId);
         return Service.START_NOT_STICKY;
     }
 
     @Override
     public void onTaskRemoved(Intent rootIntent){
-        Log.d("BDK_SERVICE", "Killing redundant services");
+        Log.d("UNITY_QL_PLG_KILLER", "Killing redundant services");
         super.onTaskRemoved(rootIntent);
         /*
-        DOPISĄĆ TUTAJ LOGIKE PRZY UBIJANIU APKIII
+            Here add action to perform when app is killed/destroyed
          */
         RemoveRedundantNotification();
+        RemoveCurrentDownload();
         this.stopSelf();
+    }
+
+    private void RemoveCurrentDownload(){
+        // here add code to remove current download from manager
     }
 
     private void RemoveRedundantNotification(){

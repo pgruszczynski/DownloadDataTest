@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31a60dcf-6e90-41df-9b98-f010b581bb72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,8 +166,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1730">
-              <caret line="164" column="5" selection-start-line="164" selection-start-column="5" selection-end-line="164" selection-end-column="5" />
+            <state relative-caret-position="890">
+              <caret line="258" column="37" lean-forward="true" selection-start-line="258" selection-start-column="37" selection-end-line="258" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6953#6954#0" expanded="true" />
@@ -179,14 +176,14 @@
                 <element signature="e#7107#7108#0" expanded="true" />
                 <element signature="e#8273#8274#0" expanded="true" />
                 <element signature="e#8326#8327#0" expanded="true" />
-                <element signature="e#9586#9587#0" expanded="true" />
-                <element signature="e#9635#9636#0" expanded="true" />
-                <element signature="e#10537#10538#0" expanded="true" />
-                <element signature="e#10582#10583#0" expanded="true" />
-                <element signature="e#10623#10624#0" expanded="true" />
-                <element signature="e#10671#10672#0" expanded="true" />
-                <element signature="e#10703#10704#0" expanded="true" />
-                <element signature="e#10731#10732#0" expanded="true" />
+                <element signature="e#9524#9525#0" expanded="true" />
+                <element signature="e#9573#9574#0" expanded="true" />
+                <element signature="e#10564#10565#0" expanded="true" />
+                <element signature="e#10609#10610#0" expanded="true" />
+                <element signature="e#10650#10651#0" expanded="true" />
+                <element signature="e#10698#10699#0" expanded="true" />
+                <element signature="e#10730#10731#0" expanded="true" />
+                <element signature="e#10758#10759#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -273,10 +270,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DownloadTester.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownloadKillService.java" />
-        <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java" />
         <option value="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadAndroid.cs" />
         <option value="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownloadEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/BackgroundDownload/BackgroundDownload.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java" />
       </list>
     </option>
   </component>
@@ -426,12 +423,12 @@
       <workItem from="1546804006887" duration="9292000" />
       <workItem from="1546852344017" duration="13310000" />
       <workItem from="1546937733170" duration="17223000" />
-      <workItem from="1547024024678" duration="4717000" />
+      <workItem from="1547024024678" duration="5365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62422000" />
+    <option name="totallyTimeSpent" value="63070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -711,8 +708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Plugins/Android/backgrounddownload/src/com/unity3d/backgrounddownload/BackgroundDownload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1730">
-          <caret line="164" column="5" selection-start-line="164" selection-start-column="5" selection-end-line="164" selection-end-column="5" />
+        <state relative-caret-position="890">
+          <caret line="258" column="37" lean-forward="true" selection-start-line="258" selection-start-column="37" selection-end-line="258" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6953#6954#0" expanded="true" />
@@ -721,14 +718,14 @@
             <element signature="e#7107#7108#0" expanded="true" />
             <element signature="e#8273#8274#0" expanded="true" />
             <element signature="e#8326#8327#0" expanded="true" />
-            <element signature="e#9586#9587#0" expanded="true" />
-            <element signature="e#9635#9636#0" expanded="true" />
-            <element signature="e#10537#10538#0" expanded="true" />
-            <element signature="e#10582#10583#0" expanded="true" />
-            <element signature="e#10623#10624#0" expanded="true" />
-            <element signature="e#10671#10672#0" expanded="true" />
-            <element signature="e#10703#10704#0" expanded="true" />
-            <element signature="e#10731#10732#0" expanded="true" />
+            <element signature="e#9524#9525#0" expanded="true" />
+            <element signature="e#9573#9574#0" expanded="true" />
+            <element signature="e#10564#10565#0" expanded="true" />
+            <element signature="e#10609#10610#0" expanded="true" />
+            <element signature="e#10650#10651#0" expanded="true" />
+            <element signature="e#10698#10699#0" expanded="true" />
+            <element signature="e#10730#10731#0" expanded="true" />
+            <element signature="e#10758#10759#0" expanded="true" />
           </folding>
         </state>
       </provider>

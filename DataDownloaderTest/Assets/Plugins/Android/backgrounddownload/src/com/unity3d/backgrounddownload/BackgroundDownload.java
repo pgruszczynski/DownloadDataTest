@@ -210,12 +210,12 @@ public class BackgroundDownload {
 
     public int checkFinished() {
         if (error != null){
-            Log.d("CHECK_FINISHED_ERROR", "checkFinished() error!");
+            Log.d("UNITY_QL_PLG_BD", "checkFinished() error!");
             return -1;
         }
         Uri uri = manager.getUriForDownloadedFile(id);
         if (uri != null){
-            Log.d("CHECK_FINISHED_URI", "checkFinished() == 1");
+            Log.d("UNITY_QL_PLG_BD", "checkFinished() == 1");
             return 1;
         }
         DownloadManager.Query query = new DownloadManager.Query();
@@ -229,7 +229,7 @@ public class BackgroundDownload {
         int status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
         int reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON));
         cursor.close();
-        Log.d("CHECK_FINISHED_status", "checkFinished() status" + status);
+        Log.d("UNITY_QL_PLG_BD", "checkFinished() status" + status);
 
         switch (status)
         {
@@ -311,7 +311,7 @@ public class BackgroundDownload {
     }
 
     public void removeDownload() {
-        Log.d("UPE_FILE_REMOVE", "I/Unity - my log: Check download status " + checkFinished() + " download with id " + id + " will be removed");
+        Log.d("UNITY_QL_PLG_BD", "I/Unity - my log: Check download status " + checkFinished() + " download with id " + id + " will be removed");
 
         if (checkFinished() == 0){
             error = "Aborted";
