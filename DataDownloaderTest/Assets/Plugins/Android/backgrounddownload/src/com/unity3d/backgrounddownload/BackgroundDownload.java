@@ -49,23 +49,24 @@ public class BackgroundDownload {
     private DownloadManager.Request request;
     private long id;
     private int totalFilesizeBytes;
-    private boolean isFilesizeKnown;
     private String error;
+
+    // servises
+    Intent garbageRemoveServiceIntent;
 
     // notyfikacje
     public static int downloadNotificationId = 9696;
 
-    private NotificationCompat.Builder notificationBuilder;
     public NotificationManager notificationManager;
+    private NotificationCompat.Builder notificationBuilder;
     private NotificationManagerCompat notificationManagerCompat;
     private NotificationChannel notificationChannel;
-    // customowa download notyfikacja
-    // ewentualnei dodać do res/values/strings.xml
-    private CharSequence notificationName = "Questland notification";
+    // to customize notification it is possible to add layout to: res/values/strings.xml
+    private final CharSequence notificationName = "Questland notification";
     private final String DOWNLOAD_NOTIFICATION_CHANNEL_ID = "QUESTLAND_CHANNEL_ID";
     private final String DOWNLOAD_CHANNEL_DESCRIPTION = "Questland download description";
-    private int notificationImportance = NotificationManager.IMPORTANCE_DEFAULT;
 
+    private int notificationImportance = NotificationManager.IMPORTANCE_DEFAULT;
     private Bitmap largeIcon;
     private android.support.v4.media.app.NotificationCompat.MediaStyle mediaStyle;
     private MediaSessionCompat mediaSessionCompat;
@@ -107,7 +108,10 @@ public class BackgroundDownload {
         downloadUri = url;
         destinationUri = dest;
 
-        //customowa notyfikacja po przywróceniu pobierania
+        // === Instantiate kill before creating notifications
+        createServiceToRemoveGarbage(context);
+        // ===
+
         createCustomNotificationChannel(context);
         createCustomNotification(context, false);
     }
@@ -175,16 +179,20 @@ public class BackgroundDownload {
         manager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         id = manager.enqueue(request);
 
-        //only in start for test add to RECREATE!!!!!!!!!!!!!
-        Intent killingServiceIntent = new Intent(context, BackgroundDownloadKillService.class);
-        context.startService(killingServiceIntent);
-        //only in start for test add to RECREATE!!!!!!!!!!!!!
+        // === Instantiate kill before creating notifications
+        createServiceToRemoveGarbage(context);
+        // ===
 
         createCustomNotificationChannel(context);
         createCustomNotificationLook(context);
         createCustomNotification(context, true);
 
         return id;
+    }
+
+    private void createServiceToRemoveGarbage(Context context){
+        garbageRemoveServiceIntent = new Intent(context, BackgroundDownloadKillService.class);
+        context.startService(garbageRemoveServiceIntent);
     }
 
     public void removeCustomNotification(Context context){
@@ -266,14 +274,6 @@ public class BackgroundDownload {
         if (ret < 1.0f)
             return ret;
         return 1.0f;
-    }
-
-    private void setTotalFilesizeBytes(int bytes){
-        totalFilesizeBytes = bytes;
-    }
-
-    public int getTotalFilesizeBytes(){
-        return 42;
     }
 
     public String getDownloadUrl() {
